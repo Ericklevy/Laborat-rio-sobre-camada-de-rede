@@ -30,8 +30,11 @@ Switch de mesa, 2 Cabos de rede de 2 metros, 3 Adaptadores ethernet e 3 computad
 
 
 ### A) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
-
-
+Atribuir  o IP
+    sudo ifconfig eno1 192.168.93.0 netmask 255.255.255.0 up
+    sudo ifconfig eno2 172.25.0.0 netmask 255.255.255.0 up
+Comando 
+    netstat -nr
 
 
 
@@ -45,8 +48,11 @@ Switch de mesa, 2 Cabos de rede de 2 metros, 3 Adaptadores ethernet e 3 computad
 ![fig2](/assets/FIG2.png)
 
 ### A ) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
-
-
+Atribuir  o IP
+    sudo ifconfig eno1 192.168.93.0 netmask 255.255.255.0 up
+    sudo ifconfig eno2 172.25.0.0 netmask 255.255.255.0 up
+Comando 
+    netstat -nr
 
 
 
@@ -67,7 +73,11 @@ Switch de mesa, 2 Cabos de rede de 2 metros, 3 Adaptadores ethernet e 3 computad
 ![fig3](/assets/FIG3.png)
 
 ### A ) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
-
+Atribuir  o IP
+    sudo ifconfig eno1 192.168.93.0 netmask 255.255.255.0 up
+    sudo ifconfig eno2 172.25.0.0 netmask 255.255.255.0 up
+Comando 
+    netstat -nr
 
 
 
@@ -84,81 +94,3 @@ Switch de mesa, 2 Cabos de rede de 2 metros, 3 Adaptadores ethernet e 3 computad
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
