@@ -24,8 +24,12 @@ Switch de mesa, 2 Cabos de rede de 2 metros, 3 Adaptadores ethernet e 3 computad
 
 ## 1 - Escolha três computadores, A, B e R e distribua os endereços IP, conforme apresentado na Figura 1 e monte as tabelas de rotas desses equipamentos, de modo que as máquinas da rede #01 consigam visualizar todas as máquinas da rede #02 (usar o comando ping para isso).
 
+![fig1](/assets/FIG1.png)
 
-### A ) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
+
+
+
+### A) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
 
 
 
@@ -37,6 +41,8 @@ Switch de mesa, 2 Cabos de rede de 2 metros, 3 Adaptadores ethernet e 3 computad
 
 
 ## 2 - 2. Altere a configuração anterior, de modo que as máquinas A, B e R consigam acessar a Internet, considerando o que está apresentado na Figura 2. Obs.: Implementar NAT no equipamento de saída para Internet.
+
+![fig2](/assets/FIG2.png)
 
 ### A ) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
 
@@ -58,7 +64,7 @@ Switch de mesa, 2 Cabos de rede de 2 metros, 3 Adaptadores ethernet e 3 computad
 
 ## 3 - Altere a configuração anterior, de modo que as máquinas A, B e R consigam acessar a Internet, considerando o que está apresentado na Figura 3. Obs.: Implementar NAT no equipamento de saída para Internet.
 
-
+![fig3](/assets/FIG3.png)
 
 ### A ) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
 
