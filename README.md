@@ -148,11 +148,13 @@ Comandos adicionais necessários :
     iptables -t nat -L -n -b
     iptables -t nat -L -n -v
     sudo route add default gw 193.168.93.1
+    sudo dhclient eno1
 
 
 Equipamento utilizado:
-  2 Cabos de rede de 2 metros, 2 Adaptadores ethernet e 3 computadores
-  
+
+    2 Cabos de rede de 2 metros, 2 Adaptadores ethernet e 3 computadores
+
 
 
 
