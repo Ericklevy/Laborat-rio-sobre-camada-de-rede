@@ -15,6 +15,50 @@ Data do expérimento 04/09/2024
 | 190091606  | Lucas Caldas Barbosa de Souza  |
 | 190020521  | Valderson Pontes da Silva Junior  |
 
+#Passo a Passo Questão 01
+## 1. desabilita o network manager em todas maquinas: 
+`sudo systemctl stop NetworkManager`
+### 2. Configura o ip de cada maquina:
+Na maquina A: `sudo ifconfig <interface de rede de A> 172.25.0.2 netmask 255.255.255.0 up`
+Na maquina B: `sudo ifconfig <interface de rede de B> 192.168.93.2 netmask 255.255.255.0 up`
+Na maquina R: 
+`sudo ifconfig <interface de rede de R-A> 172.25.0.1 netmask 255.255.255.0 up`
+`sudo ifconfig <interface de rede de R-B> 192.168.93.1 netmask 255.255.255.0 up`
+
+### 3. Adiciona na tabela de rotas:
+Na maquina A: `sudo route add -net 172.25.0.0 netmask 255.255.255.0 <interface de rede de A>`
+Na maquina B: `sudo route add -net 192.168.93.0 netmask 255.255.255.0 <interface de rede de B>`
+Na maquina R:
+`sudo route add -net 172.25.0.0 netmask 255.255.255.0 <interface de rede de R-A>`
+`sudo route add -net 192.168.93.0 netmask 255.255.255.0 <interface de rede de R-B>`
+
+### 4. Adiciona os Gateways nas Maquinas perifericas para conectar com a rede do outro:
+Na maquina A: `sudo route add -net 192.168.93.0 netmask 255.255.255.0 gw 172.25.0.1 <interface de rede de A> `
+Na maquina B: `sudo route add -net 172.25.0.0 netmask 255.255.255.0 gw 192.168.93.1 <interface de rede de B> `
+
+### 5. Habilitar o ip Forward, para que R repasse o ip da conexão como um gateway:
+Na maquina R: net.ipva4.ip_forward = 1
+
+#Passo a Passo Questão 03:
+
+### 1. Conecta o cabo novo;
+
+### 2. procura a interface do cabo novo:
+Na maquina R: `ip link show`
+
+### 3. adiciona essa interface ao ifconfig:
+Na maquina R: `sudo ip link set <interface do cabo novo com internet>`
+
+### 4. Configurar o ip com internet:
+Na maquina R: `sudo dhclient <interface do cabo novo com internet>`
+
+### 5. Configura o NAT:
+Na maquina R: `Sudo iptables -t nat -A POSTROUTING -o <interface de rede com internet> -j MASQUERADE`
+
+### 6. Adiciona a maquina com internet no gateway:
+Na maquina A: `sudo route add default gw 172.25.0.1 <interface de A>`
+Na maquina B: `sudo route add default gw 192.168.93.1 <interface de B>`
+
 
 ## Componentes Utilizados
 
