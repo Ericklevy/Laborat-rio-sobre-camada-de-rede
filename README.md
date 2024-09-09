@@ -144,7 +144,7 @@ Comandos adicionais necessários :
     cat /etc/resolv.conf
     sudo sysclt -w net.ipv4.ip_forward=1
     sudo nano /etc/sysctl.conf
-    sudo iptables -t nat -A POSTROUTING -O en01 -j MASQUERADE
+    sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
     iptables -t nat -L -n -b
     iptables -t nat -L -n -v
     sudo route add default gw 193.168.93.1
@@ -170,24 +170,75 @@ Equipamento utilizado:
 ![fig3](/assets/FIG3.png)
 
 ### A ) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
+Primeiro comando necessario para desligar :
+
+    sudo systemclt stop NetworkManager 
+
 Atribuir  o IP
-    sudo ifconfig eno1 192.168.93.0 netmask 255.255.255.0 up
-    sudo ifconfig eno2 172.25.0.0 netmask 255.255.255.0 up
-Comando 
+
+    Computador A configura : sudo ifconfig eno1 172.25.0.2 netmask 255.255.255.0 up
+    Computador B configura : sudo ifconfig eno2 192.168.93.2 netmask 255.255.255.0 up
+    Computador R configura : sudo ifconfig eno2 192.168.93.1 netmask 255.255.255.0 up
+
+Comando para repassar o ip nas maquinas:
+
+    net.ipva4.ip_forward = 1
+
+Comando para listar tabela de rotas:
+
     netstat -nr
+
 
 
 
 
 ### B ) Qual a tabela de rotas das máquinas A, B e R?
 
+#### Tabela A
+
+| Destino |Roteador | MáscaraGen. | Opções | MSS | Janela | irtt |Iface|
+| ------ | --------- | ------ | --------- | ------ | --------- | ------ | --------- |
+|0.0.0.0 | 172.25.0.1 | 0.0.0.0 | UG | 0 |0 | 0 |enx00e04c534458|
+|172.25.0.0 | 0.0.0.0 | 255.255.255.0 | U | 0 |0 | 0 |enx00e04c534458|
+|192.168.93.0 | 172.25.0.1 | 255.255.255.0 | UG | 0 |0 | 0 |enx00e04c534458|
+
+#### Tabela B
+
+| Destino |Roteador | MáscaraGen. | Opções | MSS | Janela | irtt |Iface|
+| ------ | --------- | ------ | --------- | ------ | --------- | ------ | --------- |
+| 0.0.0.0 | 192.168.93.1 | 255.255.255.0 | UG | 0 |0 | 0 |enp2s0f0|
+|172.25.0.0 | 192.168.93.1 | 255.255.255.0 | UG | 0 |0 | 0 |enp2s0f0|
+|192.168.93.0 | 0.0.0.0 | 255.255.255.0 | U | 0 |0 | 0 |enp2s0f0|
+
+#### Tabela R
+
+| Destino |Roteador | MáscaraGen. | Opções | MSS | Janela | irtt |Iface|
+| ------ | --------- | ------ | --------- | ------ | --------- | ------ | --------- |
+| 11.10.0.0 | 0.0.0.0 | 255.255.0.0 | U | 0 |0 | 0 |eth0|
+|172.25.0.0 | 0.0.0.0 | 255.255.255.0 | U | 0 |0 | 0 |eno1|
+|192.168.93.0 | 0.0.0.0 | 255.255.255.0 | U | 0 |0 | 0 |enx00e04c534458 |
 
 
 
 ### C ) Que configurações adicionais foram necessárias para todas as máquinas tenham acesso à Internet? Na resposta, relatar o equipamento e as configurações adicionais feitas.
 
+Na Maquina R
+
+    ip link show
+
+    sudo ip link set [interface de rede] up
+
+    sudo dhclient [interface de rede] 
+
+    Configurado 
+
+Maquina R
+    sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
+    sudo iptables -t nat -L -n -v4
+    sudo iptables -t nat -L -n -v4
 
 
-
+Maquina A
+    sudo route add default gw 172.25.0.1
 
 
