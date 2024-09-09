@@ -30,15 +30,51 @@ Switch de mesa, 2 Cabos de rede de 2 metros, 3 Adaptadores ethernet e 3 computad
 
 
 ### A) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
+
+Primeiro comando necessario para desligar :
+
+    sudo sistemclt stop NetworkManager 
+
 Atribuir  o IP
-    sudo ifconfig eno1 192.168.93.0 netmask 255.255.255.0 up
-    sudo ifconfig eno2 172.25.0.0 netmask 255.255.255.0 up
-Comando 
+
+    Computador A configura : sudo ifconfig eno1 172.25.0.2 netmask 255.255.255.0 up
+    Computador B configura : sudo ifconfig eno2 192.168.93.2 netmask 255.255.255.0 up
+    Computador R configura : sudo ifconfig eno2 192.168.93.1 netmask 255.255.255.0 up
+
+Comando para repassar o ip nas maquinas:
+
+    net.ipva4.ip_forward = 1
+
+Comando para listar tabela de rotas:
+
     netstat -nr
 
 
 
 ### B ) Qual a tabela de rotas das máquinas A, B e R?
+
+#### Tabela A
+
+| Destino |Roteador | MáscaraGen. | Opções | MSS | Janela | irtt |Iface|
+| ------ | --------- | ------ | --------- | ------ | --------- | ------ | --------- |
+|172.25.0.0 | 0.0.0.0 | 255.255.255.0 | U | 0 |0 | 0 |enx00e04c534458|
+|192.168.93.0 | 172.25.0.1 | 255.255.255.0 | UG | 0 |0 | 0 |enx00e04c534458|
+
+#### Tabela B
+
+| Destino |Roteador | MáscaraGen. | Opções | MSS | Janela | irtt |Iface|
+| ------ | --------- | ------ | --------- | ------ | --------- | ------ | --------- |
+|172.25.0.0 | 192.168.93.1 | 255.255.255.0 | UG | 0 |0 | 0 |enp2s0f0|
+|192.168.93.0 | 0.0.0.0 | 255.255.255.0 | U | 0 |0 | 0 |enp2s0f0|
+
+#### Tabela R
+
+| Destino |Roteador | MáscaraGen. | Opções | MSS | Janela | irtt |Iface|
+| ------ | --------- | ------ | --------- | ------ | --------- | ------ | --------- |
+|172.25.0.0 | 0.0.0.0 | 255.255.255.0 | U | 0 |0 | 0 |eno1|
+|192.168.93.0 | 0.0.0.0 | 255.255.255.0 | U | 0 |0 | 0 |enx00e04c534458 |
+
+
 
 
 
@@ -49,9 +85,10 @@ Comando
 
 ### A ) Qual o comando para atribuir um endereço IP para uma máquina Linux, usando a console (terminal)? Qual o comando para listar a tabela de rotas das máquinas (sintaxe geral)?
 Atribuir  o IP
-    sudo ifconfig eno1 192.168.93.0 netmask 255.255.255.0 up
-    sudo ifconfig eno2 172.25.0.0 netmask 255.255.255.0 up
-Comando 
+    Computador A configura : sudo ifconfig eno1 172.25.0.2 netmask 255.255.255.0 up
+    Computador B configura : sudo ifconfig eno2 192.168.93.2 netmask 255.255.255.0 up
+    Computador R configura : sudo ifconfig eno2 192.168.93.1 netmask 255.255.255.0 up
+Comando para listar tabela de rotas:
     netstat -nr
 
 
