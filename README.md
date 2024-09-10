@@ -7,10 +7,6 @@ Data do expérimento 04/09/2024
 
 | Matricula  | Nome |
 | ------------- | ------------- |
-| 200060783 |  Ana Beatriz Wanderley Massuh   |
-| 190084570  | Arthur D'Assumpção Loureiro  |
-| 200057421  | Delziron Braz de Lima  |
-| 200017322  |  Emerson Luis Teles dos Santos  |
 | 180016067  |  Erick Levy Barbosa dos Santos  |
 | 190091606  | Lucas Caldas Barbosa de Souza  |
 | 190020521  | Valderson Pontes da Silva Junior  |
