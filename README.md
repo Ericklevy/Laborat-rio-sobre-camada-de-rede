@@ -11,7 +11,7 @@ Data do expérimento 04/09/2024
 | 190091606  | Lucas Caldas Barbosa de Souza  |
 | 190020521  | Valderson Pontes da Silva Junior  |
 
-#Passo a Passo Questão 01
+# Passo a Passo Questão 01
 ## 1. desabilita o network manager em todas maquinas: 
 `sudo systemctl stop NetworkManager`
 ### 2. Configura o ip de cada maquina:
@@ -35,7 +35,7 @@ Na maquina B: `sudo route add -net 172.25.0.0 netmask 255.255.255.0 gw 192.168.9
 ### 5. Habilitar o ip Forward, para que R repasse o ip da conexão como um gateway:
 Na maquina R: net.ipva4.ip_forward = 1
 
-#Passo a Passo Questão 03:
+# Passo a Passo Questão 02 e 03:
 
 ### 1. Conecta o cabo novo;
 
